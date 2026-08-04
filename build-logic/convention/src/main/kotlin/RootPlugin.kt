@@ -132,6 +132,7 @@ class RootPlugin : Plugin<Project> {
             group = "publishing"
             description = "Publishes the BOM, library modules, and the project-conventions plugin locally."
             dependsOn(
+                ":bom:publishToMavenLocal",
                 ":coroutines:publishToMavenLocal",
                 ":coroutines:compose:publishToMavenLocal",
                 ":coroutines:viewmodel:publishToMavenLocal",
