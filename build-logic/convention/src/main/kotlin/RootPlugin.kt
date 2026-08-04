@@ -79,7 +79,7 @@ class RootPlugin : Plugin<Project> {
         val qualityCheck = tasks.register("qualityCheck") {
             group = "verification"
             description = "Runs Detekt, KtLint, Kover verification, and project-conventions tests."
-            dependsOn(installGitHooks, "koverVerify")
+            dependsOn(installGitHooks, "koverVerify", ":project-conventions:test")
         }
 
         tasks.register("formatAndCheck") {
@@ -135,6 +135,7 @@ class RootPlugin : Plugin<Project> {
                 ":coroutines:publishToMavenLocal",
                 ":coroutines:compose:publishToMavenLocal",
                 ":coroutines:viewmodel:publishToMavenLocal",
+                ":project-conventions:publishToMavenLocal",
             )
         }
     }
