@@ -123,6 +123,7 @@ class RootPlugin : Plugin<Project> {
             description = "Runs JVM unit tests for all library modules."
             dependsOn(
                 ":coroutines:jvmTest",
+                ":coroutines:compose:jvmTest",
             )
         }
 
@@ -131,6 +132,7 @@ class RootPlugin : Plugin<Project> {
             description = "Publishes the BOM, library modules, and the project-conventions plugin locally."
             dependsOn(
                 ":coroutines:publishToMavenLocal",
+                ":coroutines:compose:publishToMavenLocal",
             )
         }
     }
