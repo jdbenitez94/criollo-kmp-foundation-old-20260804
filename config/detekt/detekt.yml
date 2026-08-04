@@ -1,0 +1,57 @@
+build:
+  maxIssues: 0
+  excludeCorrectable: false
+
+config:
+  validation: true
+  warningsAsErrors: false
+
+processors:
+  active: true
+
+console-reports:
+  active: true
+
+output-reports:
+  active: true
+
+formatting:
+  active: true
+  android: false
+  MaximumLineLength:
+    active: true
+    maxLineLength: 180
+
+style:
+  active: true
+  MaxLineLength:
+    active: true
+    maxLineLength: 180
+
+complexity:
+  active: true
+  LongMethod:
+    active: false
+  TooManyFunctions:
+    active: false
+  ComplexCondition:
+    active: false
+  LongParameterList:
+    active: false
+  CyclomaticComplexMethod:
+    active: false
+
+naming:
+  active: true
+
+potential-bugs:
+  active: true
+
+exceptions:
+  active: true
+
+empty-blocks:
+  active: true
+
+comments:
+  active: false
