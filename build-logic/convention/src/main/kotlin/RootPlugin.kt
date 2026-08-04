@@ -124,6 +124,7 @@ class RootPlugin : Plugin<Project> {
             dependsOn(
                 ":coroutines:jvmTest",
                 ":coroutines:compose:jvmTest",
+                ":coroutines:viewmodel:jvmTest",
             )
         }
 
@@ -133,6 +134,7 @@ class RootPlugin : Plugin<Project> {
             dependsOn(
                 ":coroutines:publishToMavenLocal",
                 ":coroutines:compose:publishToMavenLocal",
+                ":coroutines:viewmodel:publishToMavenLocal",
             )
         }
     }
