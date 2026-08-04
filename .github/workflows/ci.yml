@@ -1,4 +1,5 @@
 name: CI
+# ubuntu-24.04 / JDK 21; prefer Node 24 for JS actions on runners.
 
 on:
   push:
