@@ -119,7 +119,19 @@ class RootPlugin : Plugin<Project> {
 
     private fun Project.registerRootAggregatorTasks() {
         tasks.register("jvmLibraryTests") {
-        group = "verification"
-        description = "Runs JVM unit tests for all library modules."
+            group = "verification"
+            description = "Runs JVM unit tests for all library modules."
+            dependsOn(
+                ":coroutines:jvmTest",
+            )
+        }
+
+        tasks.register("publishToMavenLocal") {
+            group = "publishing"
+            description = "Publishes the BOM, library modules, and the project-conventions plugin locally."
+            dependsOn(
+                ":coroutines:publishToMavenLocal",
+            )
+        }
     }
 }
