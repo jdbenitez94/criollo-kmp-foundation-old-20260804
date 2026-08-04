@@ -8,7 +8,7 @@ detekt = "1.23.8"
 ktlint-engine = "1.8.0"
 klint = "14.2.0"
 dokka = "2.2.0"
-kover = "0.9.8"
+kover = "0.9.9"
 strikt = "0.35.1"
 
 [plugins]
