@@ -37,6 +37,7 @@ class CriolloKmpLibraryConventionPlugin : Plugin<Project> {
         val androidNamespace = when (path) {
             ":coroutines" -> ProjectConfig.Namespaces.coroutines
             ":coroutines:compose" -> ProjectConfig.Namespaces.coroutinesCompose
+            ":coroutines:viewmodel" -> ProjectConfig.Namespaces.coroutinesViewmodel
             else -> error("criollo.kmp-library applies only to known library modules (got $path)")
         }
 
