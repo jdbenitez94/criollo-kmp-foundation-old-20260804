@@ -42,6 +42,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
+      - name: Require NVD API key
+        env:
+          NVD_API_KEY: ${{ secrets.NVD_API_KEY }}
+        run: |
+          if [ -z "${NVD_API_KEY}" ]; then
+            echo "::error::NVD_API_KEY secret is required for OWASP Dependency Check (see BADGES-SETUP.md). Without it, NVD updates are heavily rate-limited."
+            exit 1
+          fi
+
       - name: Setup Gradle for CI
         uses: ./.github/actions/setup-gradle-ci
         with:
@@ -52,6 +61,8 @@ jobs:
           cache-encryption-key: ${{ secrets.GRADLE_ENCRYPTION_KEY }}
 
       - name: OWASP Dependency Check
+        env:
+          NVD_API_KEY: ${{ secrets.NVD_API_KEY }}
         run: |
           ./gradlew dependencyCheckAnalyze \
             --no-configuration-cache \

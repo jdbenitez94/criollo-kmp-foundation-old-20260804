@@ -11,6 +11,7 @@ Store tokens in gitignored `local.properties` and sync to GitHub Actions secrets
 | `codecovToken` | `CODECOV_TOKEN` |
 | `codacyToken` (or `codacyProjectToken`) | `CODACY_PROJECT_TOKEN` |
 | `gradleEncryptionKey` | `GRADLE_ENCRYPTION_KEY` |
+| `nvdApiKey` | `NVD_API_KEY` |
 
 Sync example (values never printed):
 
@@ -49,7 +50,25 @@ Grade badge: Shields.io `codacy/grade/github/jdbenitez94/criollo-kmp-foundation`
 
 ---
 
-## 3. Automated badges (no extra accounts)
+## 3. NVD API key (OWASP Dependency Check) — required
+
+Without an NVD key, `dependencyCheckAnalyze` is rate-limited and can take a very long time.
+
+1. Request a free key: https://nvd.nist.gov/developers/request-an-api-key  
+2. Confirm the email and copy the key.  
+3. Put it in `local.properties` as `nvdApiKey=…` and sync `NVD_API_KEY`:
+
+```bash
+awk -F= '/^nvdApiKey=/{print substr($0,index($0,"=")+1)}' local.properties \
+  | gh secret set NVD_API_KEY -R jdbenitez94/criollo-kmp-foundation
+```
+
+CI fails the security job if `NVD_API_KEY` is missing. The Gradle User Home cache (via
+`setup-gradle` + `GRADLE_ENCRYPTION_KEY`) retains NVD data between runs on `main`/`dev`.
+
+---
+
+## 4. Automated badges (no extra accounts)
 
 * **GitHub Actions CI** — `.github/workflows/ci.yml`
 * **Kotlin Multiplatform** — static Shields.io badge

@@ -9,8 +9,8 @@ CI for the Criollo KMP Foundation monorepo.
 | `security` | OWASP `dependencyCheckAnalyze` (`failBuildOnCVSS=7.0`) |
 | `build` | `qualityCheck` + `jvmLibraryTests` + `koverXmlReport`; Codacy analysis + coverage; Codecov upload |
 
-Required secrets: `CODECOV_TOKEN`, `CODACY_PROJECT_TOKEN`, `GRADLE_ENCRYPTION_KEY`
-(see [`BADGES-SETUP.md`](../../BADGES-SETUP.md)).
+Required secrets: `CODECOV_TOKEN`, `CODACY_PROJECT_TOKEN`, `GRADLE_ENCRYPTION_KEY`,
+`NVD_API_KEY` (see [`BADGES-SETUP.md`](../../BADGES-SETUP.md)).
 
 Triggers: push and pull_request to **`main`** and **`dev`** (docs-only / markdown-only
 changes are skipped via `paths-ignore`), matching Saveable.
@@ -66,6 +66,7 @@ Third-party actions use immutable commit SHAs with a version comment for humans,
 | `CODECOV_TOKEN` | Codecov upload (required by `ci.yml`) |
 | `CODACY_PROJECT_TOKEN` | Codacy analysis + coverage upload (required by `ci.yml`) |
 | `GRADLE_ENCRYPTION_KEY` | Encrypts Gradle configuration-cache entries in Actions cache (required for warm CC) |
+| `NVD_API_KEY` | NIST NVD API key for OWASP Dependency Check (required; avoids multi-minute rate limits) |
 
 ## Variables (release)
 
