@@ -11,7 +11,7 @@ ktlint-engine = "1.8.0"
 ktlint-engine-legacy = "1.5.0"
 klint = "14.2.0"
 dokka = "2.2.0"
-kover = "0.9.9"
+kover = "0.9.11"
 dependencycheck = "12.2.2"
 strikt = "0.35.1"
 
